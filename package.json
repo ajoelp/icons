@@ -26,8 +26,8 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "icons",
-  "author": "Joel Podrebarac",
+  "name": "@ajoelp/icons",
+  "author": "Joel Podrebarac <joelpodrebar@gmail.com>",
   "module": "dist/icons.esm.js",
   "devDependencies": {
     "@svgr/core": "^5.4.0",

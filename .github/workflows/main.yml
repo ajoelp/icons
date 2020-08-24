@@ -1,42 +1,25 @@
-name: CI
-on: [push]
+name: Publish
+
+on:
+  create:
+    tags:
+      - v*
+
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Begin CI...
-        uses: actions/checkout@v2
-
-      - name: Use Node 12
+      - uses: actions/checkout@v2
+      - name: Use Node.js 14.x
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
-
-      - name: Use cached node_modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: nodeModules-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            nodeModules-
-
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
+          node-version: 14.x
+          registry-url: https://registry.npmjs.org/
+      - name: install
+        run: npm ci
+      - name: build
+        run: npm run build
+      - name: npm publish
+        run: npm publish --access public
         env:
-          CI: true
-
-      - name: Lint
-        run: yarn lint
-        env:
-          CI: true
-
-      - name: Test
-        run: yarn test --ci --coverage --maxWorkers=2
-        env:
-          CI: true
-
-      - name: Build
-        run: yarn build
-        env:
-          CI: true
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
