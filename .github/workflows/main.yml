@@ -17,6 +17,8 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - name: install
         run: npm ci
+      - name: icons
+        run: npm run build-icons
       - name: build
         run: npm run build
       - name: npm publish
