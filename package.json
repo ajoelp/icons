@@ -44,7 +44,7 @@
     "camelcase": "^6.0.0",
     "core-js": "^3.6.5",
     "fs-extra": "^9.0.1",
-    "heroicons": "^0.3.7",
+    "heroicons": "^0.4.1",
     "react": "^16.13.1",
     "react-docgen-typescript-loader": "^3.7.2",
     "react-dom": "^16.13.1",
